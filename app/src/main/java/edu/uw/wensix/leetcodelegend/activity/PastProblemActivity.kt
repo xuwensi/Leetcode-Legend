@@ -2,11 +2,13 @@ package edu.uw.wensix.leetcodelegend.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import edu.uw.wensix.leetcodelegend.LLApplication
 import edu.uw.wensix.leetcodelegend.adapter.ProblemListAdapter
 import edu.uw.wensix.leetcodelegend.databinding.ActivityPastProblemBinding
+import edu.uw.wensix.leetcodelegend.model.Inbox
 import edu.uw.wensix.leetcodelegend.model.Problem
 import kotlinx.coroutines.launch
 
@@ -25,11 +27,16 @@ class PastProblemActivity : AppCompatActivity() {
 
         with(binding) {
             problems = listOf()
-
             adapter = ProblemListAdapter(problems)
             pastProblemList.adapter = adapter
-
             loadData()
+
+            swipeToRefreshLayout.setOnRefreshListener {
+                adapter = ProblemListAdapter(problems)
+                pastProblemList.adapter = adapter
+                loadData()
+                swipeToRefreshLayout.isRefreshing = false
+            }
         }
 
 
@@ -37,8 +44,9 @@ class PastProblemActivity : AppCompatActivity() {
 
     private fun loadData() {
         lifecycleScope.launch {
-                problems = dataRepo.getProblem()
-                adapter.updateProblem(problems)
+            val inbox: Inbox = dataRepo.getProblem()
+            problems = inbox.problems
+            adapter.updateProblem(problems)
 
 //            }.onFailure {
 //                Toast.makeText(this@PastProblemActivity, "Error fetching past problems", Toast.LENGTH_SHORT).show()

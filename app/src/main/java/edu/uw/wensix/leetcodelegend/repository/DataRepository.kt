@@ -1,6 +1,6 @@
 package edu.uw.wensix.leetcodelegend.repository
 
-import edu.uw.wensix.leetcodelegend.model.Problem
+import edu.uw.wensix.leetcodelegend.model.Inbox
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -16,6 +16,6 @@ class DataRepository {
 }
 
 interface ProblemService{
-    @GET("xuwensi/Leetcode-Legend/main/sample_data/past_problem.json")
-    suspend fun getProblem(): List<Problem>
+    @GET("xuwensi/Leetcode-Legend/wensi/sample_data/past_problem.json")
+    suspend fun getProblem(): Inbox
 }

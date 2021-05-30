@@ -6,18 +6,20 @@ import androidx.recyclerview.widget.RecyclerView
 import edu.uw.wensix.leetcodelegend.databinding.ProblemItemBinding
 import edu.uw.wensix.leetcodelegend.model.Problem
 
-class ProblemListAdapter(private var listOfProblems: List<Problem>):
-    RecyclerView.Adapter<ProblemListAdapter.ProblemHolder>() {
+class ProblemListAdapter(
+    private var listOfProblems: List<Problem>
+    ): RecyclerView.Adapter<ProblemListAdapter.ProblemHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProblemHolder {
-        val itemBinding = ProblemItemBinding.inflate(LayoutInflater.from(parent.context))
-        return ProblemHolder(itemBinding)
+        val binding = ProblemItemBinding.inflate(LayoutInflater.from(parent.context))
+        return ProblemHolder(binding)
     }
 
-    class ProblemHolder(val binding: ProblemItemBinding): RecyclerView.ViewHolder(binding.root)
+    override fun getItemCount(): Int =listOfProblems.size
 
     override fun onBindViewHolder(holder: ProblemHolder, position: Int) {
         val problem = listOfProblems[position]
+
         with(holder.binding) {
             problemId.text = problem.number.toString()
             problemTitle.text = problem.title
@@ -29,5 +31,5 @@ class ProblemListAdapter(private var listOfProblems: List<Problem>):
         this.listOfProblems = newList
     }
 
-    override fun getItemCount(): Int =listOfProblems.size
+    class ProblemHolder(val binding: ProblemItemBinding): RecyclerView.ViewHolder(binding.root)
 }
