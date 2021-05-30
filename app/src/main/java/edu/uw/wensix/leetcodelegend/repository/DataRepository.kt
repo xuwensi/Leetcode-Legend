@@ -5,8 +5,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
-//https://raw.githubusercontent.com/xuwensi/Leetcode-Legend/main/sample_data/past_problem.json
-
 class DataRepository {
     private val problemService= Retrofit.Builder()
         .baseUrl("https://raw.githubusercontent.com/")

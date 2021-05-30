@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="containerPadding">16dp</dimen>
+    <dimen name="itemProblemPadding">12dp</dimen>
     <dimen name="btnWidth">120dp</dimen>
+    <dimen name="smallFont">16sp</dimen>
+
 </resources>
