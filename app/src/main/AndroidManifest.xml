@@ -10,9 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LeetcodeLegend">
-        <activity android:name=".PastProblemActivity"></activity>
-        <activity android:name=".PerformanceActivity" />
-        <activity android:name=".TimerActivity">
+        <activity android:name=".activity.PastProblemActivity"></activity>
+        <activity android:name=".activity.PerformanceActivity" />
+        <activity android:name=".activity.TimerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
