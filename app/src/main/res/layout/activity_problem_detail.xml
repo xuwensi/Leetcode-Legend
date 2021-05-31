@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/containerPadding"
+    tools:context=".activity.ProblemDetailActivity">
+
+    <TextView
+        android:id="@+id/problemTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="@dimen/LargeFont"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/problemId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/problemDetailMarginTop"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/smallFont"
+
+        app:layout_constraintBottom_toTopOf="@id/problemDifficulty"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/problemTitle" />
+
+    <TextView
+        android:id="@+id/problemDifficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/problemDetailMarginTop"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/smallFont"
+        app:layout_constraintBottom_toTopOf="@id/problemDateCompleted"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/problemId" />
+
+    <TextView
+        android:id="@+id/problemDateCompleted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/problemDetailMarginTop"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/smallFont"
+        app:layout_constraintBottom_toTopOf="@id/problemTimeTaken"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/problemDifficulty" />
+
+    <TextView
+        android:id="@+id/problemTimeTaken"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/problemDetailMarginTop"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/smallFont"
+        app:layout_constraintBottom_toTopOf="@id/problemReviewDate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/problemDateCompleted" />
+
+    <TextView
+        android:id="@+id/problemReviewDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/problemDetailMarginTop"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/smallFont"
+        app:layout_constraintBottom_toTopOf="@id/problemNote"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/problemTimeTaken" />
+
+    <TextView
+        android:id="@+id/problemNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/problemDetailMarginTop"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/smallFont"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/problemReviewDate" />
+
+    <Button
+        android:id="@+id/btnProblemReview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/problemDetailMarginTop"
+        android:text="@string/practice_it"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/problemNote" />
+</androidx.constraintlayout.widget.ConstraintLayout>

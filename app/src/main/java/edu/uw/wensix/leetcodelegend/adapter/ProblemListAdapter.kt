@@ -10,6 +10,8 @@ class ProblemListAdapter(
     private var listOfProblems: List<Problem>
     ): RecyclerView.Adapter<ProblemListAdapter.ProblemHolder>() {
 
+    var problemClickedListener:(problem: Problem) -> Unit ={ _ -> }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProblemHolder {
         val binding = ProblemItemBinding.inflate(LayoutInflater.from(parent.context))
         return ProblemHolder(binding)
@@ -24,7 +26,12 @@ class ProblemListAdapter(
             problemId.text = problem.number.toString()
             problemTitle.text = problem.title
             problemDate.text = problem.date
+
+            problemItemRoot.setOnClickListener {
+                problemClickedListener(problem)
+            }
         }
+
     }
 
     fun updateProblem(newList: List<Problem>) {
