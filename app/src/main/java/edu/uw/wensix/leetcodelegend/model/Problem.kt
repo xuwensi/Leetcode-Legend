@@ -12,5 +12,5 @@ data class Problem(
     val difficulty: String,
     val note: String,
     val durationSecond: Int,
-    val notifyDate: String,
+    val notifyDate: String?,
 ):Parcelable

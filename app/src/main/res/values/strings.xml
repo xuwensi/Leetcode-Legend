@@ -4,4 +4,12 @@
     <string name="timer">Timer</string>
     <string name="performance">Stats</string>
     <string name="past_problem">Problems</string>
+    <string name="practice_it">Practice It!</string>
+    <string name="prob_detail_id">Number: %d</string>
+    <string name="prob_detail_difficulty">Difficulty: %s</string>
+    <string name="prob_detail_date_completed">Date Completed: %s</string>
+    <string name="prob_detail_duration">Time Taken: %s seconds</string>
+    <string name="prob_detail_review_date">Planned Review Date: %s</string>
+    <string name="prob_detail_note">Notes: %s</string>
+
 </resources>

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.uw.wensix.leetcodelegend">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".LLApplication"
@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LeetcodeLegend">
+        <activity android:name=".activity.ProblemDetailActivity"></activity>
         <activity android:name=".activity.PastProblemActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

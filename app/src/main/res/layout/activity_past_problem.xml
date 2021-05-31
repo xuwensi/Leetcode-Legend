@@ -20,7 +20,7 @@
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@string/search"
-            android:textColor="#8C8484"
+            android:textColor="@color/searchFontColor"
             app:layout_constraintEnd_toStartOf="@id/icSearch"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

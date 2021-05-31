@@ -27,19 +27,29 @@ class PastProblemActivity : AppCompatActivity() {
 
         with(binding) {
             problems = listOf()
-            adapter = ProblemListAdapter(problems)
-            pastProblemList.adapter = adapter
+            initProblem()
             loadData()
 
             swipeToRefreshLayout.setOnRefreshListener {
-                adapter = ProblemListAdapter(problems)
-                pastProblemList.adapter = adapter
+                initProblem()
                 loadData()
+                Log.i("problem", problems.toString())
+
                 swipeToRefreshLayout.isRefreshing = false
             }
         }
 
+    }
 
+    private fun initProblem() {
+        with(binding){
+            adapter = ProblemListAdapter(problems)
+            pastProblemList.adapter = adapter
+            adapter.problemClickedListener = { problem ->
+
+                navigateToProblemDetailActivity(this@PastProblemActivity, problem)
+            }
+        }
     }
 
     private fun loadData() {
@@ -47,6 +57,7 @@ class PastProblemActivity : AppCompatActivity() {
             val inbox: Inbox = dataRepo.getProblem()
             problems = inbox.problems
             adapter.updateProblem(problems)
+            Log.i("problem", problems.toString())
 
 //            }.onFailure {
 //                Toast.makeText(this@PastProblemActivity, "Error fetching past problems", Toast.LENGTH_SHORT).show()
