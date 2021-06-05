@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.SortedList
 import com.google.gson.Gson
 import edu.uw.wensix.leetcodelegend.LLApplication
 import edu.uw.wensix.leetcodelegend.adapter.ProblemListAdapter
@@ -12,6 +13,7 @@ import edu.uw.wensix.leetcodelegend.databinding.ActivityPastProblemBinding
 import edu.uw.wensix.leetcodelegend.model.Inbox
 import edu.uw.wensix.leetcodelegend.model.Problem
 import kotlinx.coroutines.launch
+import java.util.*
 
 class PastProblemActivity : AppCompatActivity() {
     private lateinit var adapter: ProblemListAdapter
@@ -53,9 +55,12 @@ class PastProblemActivity : AppCompatActivity() {
         }
 
         with(binding) {
-            var keyword = searchBar.text.toString().lowercase()
+            var keyword = ""
+            if (searchBar.text != null) {
+                keyword = searchBar.text.toString().lowercase()
+            }
 
-            if (keyword == null || keyword.equals("")) {
+            if (keyword == "") {
                 initProblem()
 
             } else {
@@ -119,46 +124,68 @@ class PastProblemActivity : AppCompatActivity() {
         val gson = Gson()
         val inbox = gson.fromJson(problemsJsonString, Inbox::class.java)
         problems = inbox.problems
+        Collections.sort(problems)
         adapter.updateProblem(problems)
     }
 
 }
 
 private val problemsJsonString = """
-    {
-      "title" : "Leetcode Legend data",
+{
+  "title" : "Leetcode Legend data",
 
-      "problems": [
-          {
-            "id": 1,
-            "number": 1,
-            "title": "Two Sum",
-            "date": "01/20/2021",
-            "difficulty": "easy",
-            "note": "Brute Force or Two-pass Hash Table",
-            "durationSecond": "375",
-            "notifyDate": null
-          },
-          {
-            "id": 2,
-            "number": 2,
-            "title": "Add Two Numbers",
-            "date": "01/22/2021",
-            "difficulty": "medium",
-            "note": "Keep track of the carry using a variable and simulate digits-by-digits sum starting from the head of list, which contains the least-significant digit.",
-            "durationSecond": "498",
-            "notifyDate": "03/22/2021"
-          },
-          {
-            "id": 5,
-            "number": 5,
-            "title": "Longest Palindromic Substring",
-            "date": "01/23/2021",
-            "difficulty": "medium",
-            "note": "avoid unnecessary re-computation while validating palindromes. Consider the case ababa. If we already knew that bab is a palindrome, it is obvious that ababa must be a palindrome since the two left and right end letters are the same.",
-            "durationSecond": "498",
-            "notifyDate": "03/23/2021"
-          }
-        ]
-  }
+  "problems": [
+      {
+        "id": 100,
+        "number": 100,
+        "title": "Same Tree",
+        "date": "02/20/2221",
+        "difficulty": "easy",
+        "note": "The simplest strategy here is to use recursion. Check if p and q nodes are not None, and their values are equal. If all checks are OK, do the same for the child nodes recursively.",
+        "durationSecond": "423",
+        "notifyDate": null
+      },
+      {
+        "id": 1,
+        "number": 1,
+        "title": "Two Sum",
+        "date": "01/20/2021",
+        "difficulty": "easy",
+        "note": "Brute Force or Two-pass Hash Table",
+        "durationSecond": "375",
+        "notifyDate": null
+      },
+      
+      {
+        "id": 5,
+        "number": 5,
+        "title": "Longest Palindromic Substring",
+        "date": "01/23/2021",
+        "difficulty": "medium",
+        "note": "avoid unnecessary re-computation while validating palindromes. Consider the case ababa. If we already knew that bab is a palindrome, it is obvious that ababa must be a palindrome since the two left and right end letters are the same.",
+        "durationSecond": "498",
+        "notifyDate": "03/23/2021"
+      },
+      {
+        "id": 2,
+        "number": 2,
+        "title": "Add Two Numbers",
+        "date": "01/22/2021",
+        "difficulty": "medium",
+        "note": "Keep track of the carry using a variable and simulate digits-by-digits sum starting from the head of list, which contains the least-significant digit.",
+        "durationSecond": "498",
+        "notifyDate": "03/22/2021"
+      },
+      {
+        "id": 115,
+        "number": 115,
+        "title": "Distinct Subsequences",
+        "date": "03/01/2021",
+        "difficulty": "hard",
+        "note": "A string's subsequence is a new string formed from the original string by deleting some (can be none) of the characters without disturbing the remaining characters' relative positions.",
+        "durationSecond": "1225",
+        "notifyDate": "04/01/2021"
+      }
+    ]
+}
 """.trimIndent()

@@ -13,4 +13,8 @@ data class Problem(
     val note: String,
     val durationSecond: Int,
     val notifyDate: String?,
-):Parcelable
+):Parcelable, Comparable<Problem> {
+    override fun compareTo(other: Problem): Int {
+        return this.number - other.number
+    }
+}
