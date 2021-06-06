@@ -7,6 +7,7 @@ import edu.uw.wensix.leetcodelegend.repository.DataRepository
 class LLApplication: Application() {
 
     lateinit var dataRepository: DataRepository
+    lateinit var problemToReview: Problem
 
     override fun onCreate() {
         super.onCreate()
