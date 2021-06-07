@@ -13,16 +13,13 @@ class LeetcodeWorker(
     workerParameters: WorkerParameters
 ): CoroutineWorker(context, workerParameters) {
 
-    private val dataRepository by lazy { dotifyApp.dataRepository }
-    private val dotifyApp by lazy { context.applicationContext as LLApplication}
-    private val songNotificationManager by lazy { dotifyApp.notificationManager }
+//    private val dataRepository by lazy { dotifyApp.dataRepository }
+    private val llApp by lazy { context.applicationContext as LLApplication }
+    private val problemNotificationManager by lazy { llApp.notificationManager }
 
     override suspend fun doWork(): Result {
 
-        val allSongs = dataRepository.getProblem()
-
-
-        songNotificationManager.publishNewSongNotification()
+        problemNotificationManager.publishReviewNotification()
 
         return Result.success()
     }

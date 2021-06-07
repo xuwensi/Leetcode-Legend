@@ -19,7 +19,7 @@ import kotlin.random.Random
 private const val NEW_PROBLEM_CHANNEL_ID = "NEW_PROBLEM_CHANNEL_ID"
 
 
-class ProblemNotificationManager (private val context: Context) {
+class ProblemNotificationManager(private val context: Context) {
     private val notificationManager = NotificationManagerCompat.from(context)
     private val llApp: LLApplication = context.applicationContext as LLApplication
 
@@ -28,22 +28,32 @@ class ProblemNotificationManager (private val context: Context) {
         initNotificationChannels()
     }
 
-    fun publishNewProblemNotification() {
-        var selectedProblem: Problem = llApp.problemToReview
+    fun publishReviewNotification() {
+        val problem: Problem? = llApp.problemToReview
+        val selectedProblem: Problem
+        if (problem?.notifyDate != null) selectedProblem = problem else return
 
         // Define the intent or action you want when user taps on notification
         val intent = Intent(context, PastProblemActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
         }
-        val pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT) // dont forget to add PendingIntent.FLAG_UPDATE_CURRENT to send data over
+        val pendingIntent: PendingIntent = PendingIntent.getActivity(
+            context,
+            0,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT
+        ) // dont forget to add PendingIntent.FLAG_UPDATE_CURRENT to send data over
 
 
         // Build information you want the notification to show
-        val builder = NotificationCompat.Builder(context, NEW_PROBLEM_CHANNEL_ID)    // channel id from creating the channel
+        val builder = NotificationCompat.Builder(
+            context,
+            NEW_PROBLEM_CHANNEL_ID
+        )    // channel id from creating the channel
             .setSmallIcon(R.drawable.app_icon)
-            .setContentTitle("It's time to review ${selectedProblem?.title} !!")
-            .setContentText("It's a ${selectedProblem?.difficulty} question")
+            .setContentTitle("Time to review ${selectedProblem.title} !!")
+            .setContentText("It's a ${selectedProblem.difficulty} problem")
             .setContentIntent(pendingIntent)    // sets the action when user clicks on notification
             .setAutoCancel(true)    // This will dismiss the notification tap
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
@@ -51,8 +61,7 @@ class ProblemNotificationManager (private val context: Context) {
         // Tell the OS to publish the notification using the info
         with(notificationManager) {
             // notificationId is a unique int for each notification that you must define
-            val notificationId = Random.nextInt()
-            notify(notificationId, builder.build())
+            notify(selectedProblem.id, builder.build())
         }
     }
 

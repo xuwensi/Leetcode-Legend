@@ -159,7 +159,7 @@ private val problemsJsonString = """
         "id": 100,
         "number": 100,
         "title": "Same Tree",
-        "date": "02/20/2221",
+        "date": "02/20/2021",
         "difficulty": "easy",
         "note": "The simplest strategy here is to use recursion. Check if p and q nodes are not None, and their values are equal. If all checks are OK, do the same for the child nodes recursively.",
         "durationSecond": "423",
