@@ -28,11 +28,11 @@ class PastProblemActivity : AppCompatActivity() {
         with(binding) {
             problems = listOf()
             initProblem()
-            loadData()
+//            loadData()
 
             swipeToRefreshLayout.setOnRefreshListener {
                 initProblem()
-                loadData()
+//                loadData()
                 Log.i("problem", problems.toString())
 
                 swipeToRefreshLayout.isRefreshing = false
@@ -52,18 +52,18 @@ class PastProblemActivity : AppCompatActivity() {
         }
     }
 
-    private fun loadData() {
-        lifecycleScope.launch {
-            val inbox: Inbox = dataRepo.getProblem()
-            problems = inbox.problems
-            adapter.updateProblem(problems)
-            Log.i("problem", problems.toString())
-
-//            }.onFailure {
-//                Toast.makeText(this@PastProblemActivity, "Error fetching past problems", Toast.LENGTH_SHORT).show()
-//            }
-
-        }
-    }
+//    private fun loadData() {
+//        lifecycleScope.launch {
+//            val inbox: Inbox = dataRepo.getProblem()
+//            problems = inbox.problems
+//            adapter.updateProblem(problems)
+//            Log.i("problem", problems.toString())
+//
+////            }.onFailure {
+////                Toast.makeText(this@PastProblemActivity, "Error fetching past problems", Toast.LENGTH_SHORT).show()
+////            }
+//
+//        }
+//    }
 
 }

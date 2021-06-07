@@ -11,5 +11,9 @@
     <string name="prob_detail_duration">Time Taken: %s seconds</string>
     <string name="prob_detail_review_date">Planned Review Date: %s</string>
     <string name="prob_detail_note">Notes: %s</string>
+    <string name="stop">Stop Timer</string>
+    <string name="start">Start Timer</string>
+    <string name="working">Started</string>
+    <string name="stopped">Stopped</string>
 
 </resources>
