@@ -26,8 +26,7 @@ class TimerActivity : AppCompatActivity() {
         binding = ActivityTimerBinding.inflate(layoutInflater).apply { setContentView(root) }
         with(binding) {
             val meter = findViewById<Chronometer>(R.id.c_meter)
-            val btn = findViewById<Button>(R.id.btn)
-            btn?.setOnClickListener(object : View.OnClickListener {
+            btn.setOnClickListener(object : View.OnClickListener {
                 var isWorking = false
 
                 override fun onClick(v: View) {
@@ -53,7 +52,7 @@ class TimerActivity : AppCompatActivity() {
             })
 
             binding.submitBtn.setOnClickListener {
-                var time = SystemClock.elapsedRealtime() - meter.getBase();
+                val time = SystemClock.elapsedRealtime() - meter.getBase();
                 Toast.makeText(this@TimerActivity, "elasp $time", Toast.LENGTH_SHORT).show()
                 navigateToEditProblemActivity(this@TimerActivity)
             }
