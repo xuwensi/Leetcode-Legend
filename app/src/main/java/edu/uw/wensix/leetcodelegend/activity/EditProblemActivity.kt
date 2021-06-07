@@ -58,7 +58,7 @@ class EditProblemActivity : AppCompatActivity() {
                 preferences.edit {
                     putString("Problem ${binding.questionNum}", json)
                 }
-                            }
+            }
         }
         setContentView(R.layout.activity_edit_problem)
     }
