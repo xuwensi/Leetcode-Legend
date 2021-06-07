@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/constraint_layout">
+    android:orientation="vertical">
 
 
     <Chronometer
@@ -33,18 +32,16 @@
         android:text="@string/start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/c_meter"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/c_meter" />
 
     <Button
+        android:id="@+id/submitBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SUBMIT"
-        android:id="@+id/submitBtn"
+        android:text="@string/submit"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn" />
-
 
 
     <Button
@@ -54,8 +51,7 @@
         android:text="@string/timer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btnPerformance"
-        app:layout_constraintStart_toStartOf="parent"
-/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnPerformance"
@@ -64,8 +60,7 @@
         android:text="@string/performance"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btnPastProblem"
-        app:layout_constraintStart_toEndOf="@id/btnTimer"
-        />
+        app:layout_constraintStart_toEndOf="@id/btnTimer" />
 
     <Button
         android:id="@+id/btnPastProblem"
@@ -74,7 +69,6 @@
         android:text="@string/past_problem"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnPerformance"
-       />
+        app:layout_constraintStart_toEndOf="@id/btnPerformance" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

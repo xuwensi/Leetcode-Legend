@@ -15,8 +15,9 @@ import edu.uw.wensix.leetcodelegend.model.Problem
 import java.util.*
 
 const val PROBLEM_PREF_KEY = "problem preference key"
+const val TIME_KEY = "TIME_KEY"
 
-fun navigateToEditProblemActivity(context: Context) = with(context) {
+fun navigateToEditProblemActivity(context: Context, time: Long) = with(context) {
 //    val intent = Intent(context, EditProblemActivity::class.java).apply {
 //        val bundle = Bundle().apply {
 //            putParcelable(PROBLEM_KEY, problem)
@@ -25,7 +26,7 @@ fun navigateToEditProblemActivity(context: Context) = with(context) {
 //    }
     val intent = Intent(context, EditProblemActivity::class.java).apply {
         val bundle = Bundle().apply {
-            putString(PROBLEM_KEY, "yes")
+            putLong(TIME_KEY, time)
         }
         putExtras(bundle)
     }
@@ -52,7 +53,7 @@ class EditProblemActivity : AppCompatActivity() {
                     Calendar.DATE.toString(),
                     difficulty.text.toString(),
                     note.text.toString(),
-                    0,
+                    intent.getLongExtra(TIME_KEY, 0).toInt()/1000,
                     reminder.text.toString()
                 )
                 Log.i("problem", createdProblem.toString())

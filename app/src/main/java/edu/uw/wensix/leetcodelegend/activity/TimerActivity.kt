@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.SystemClock
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Chronometer
@@ -51,10 +52,11 @@ class TimerActivity : AppCompatActivity() {
                 }
             })
 
-            binding.submitBtn.setOnClickListener {
+            submitBtn.setOnClickListener {
                 val time = SystemClock.elapsedRealtime() - meter.getBase();
-                Toast.makeText(this@TimerActivity, "elasp $time", Toast.LENGTH_SHORT).show()
-                navigateToEditProblemActivity(this@TimerActivity)
+                Log.i("time", time.toString())
+//                Toast.makeText(this@TimerActivity, "elasp $time", Toast.LENGTH_SHORT).show()
+                navigateToEditProblemActivity(this@TimerActivity, time)
             }
 
         }
