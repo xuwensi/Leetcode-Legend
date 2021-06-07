@@ -11,7 +11,14 @@
     <string name="prob_detail_duration">Time Taken: %s seconds</string>
     <string name="prob_detail_review_date">Planned Review Date: %s</string>
     <string name="prob_detail_note">Notes: %s</string>
+<<<<<<< HEAD
     <string name="sort_by_id">Sort By ID</string>
     <string name="sort_by_date">Sort By Date</string>
+=======
+    <string name="stop">Stop Timer</string>
+    <string name="start">Start Timer</string>
+    <string name="working">Started</string>
+    <string name="stopped">Stopped</string>
+>>>>>>> wensi
 
 </resources>
