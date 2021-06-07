@@ -37,6 +37,7 @@ class PastProblemActivity : AppCompatActivity() {
 
             swipeToRefreshLayout.setOnRefreshListener {
                 initProblem()
+
                 readLocalJsonData()
 //                loadData()
 

@@ -10,6 +10,7 @@ data class Problem(
     val title: String,
     val date: String,
     val difficulty: String,
+    val tag: String,
     val note: String,
     val durationSecond: Int,
     val notifyDate: String?,
