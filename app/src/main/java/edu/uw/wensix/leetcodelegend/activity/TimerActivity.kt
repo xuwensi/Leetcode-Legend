@@ -1,5 +1,7 @@
 package edu.uw.wensix.leetcodelegend.activity
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -14,6 +16,12 @@ import edu.uw.wensix.leetcodelegend.R
 import edu.uw.wensix.leetcodelegend.databinding.ActivityTimerBinding
 import java.util.*
 
+fun navigateToTimerActivity(context: Context) = with(context) {
+
+    val intent = Intent(context, TimerActivity::class.java)
+    
+    startActivity(intent)
+}
 
 class TimerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTimerBinding
@@ -58,6 +66,8 @@ class TimerActivity : AppCompatActivity() {
 //                Toast.makeText(this@TimerActivity, "elasp $time", Toast.LENGTH_SHORT).show()
                 navigateToEditProblemActivity(this@TimerActivity, time)
             }
+
+            btnPastProblem.setOnClickListener { navigateToPastProblemActivity(this@TimerActivity) }
 
         }
     }

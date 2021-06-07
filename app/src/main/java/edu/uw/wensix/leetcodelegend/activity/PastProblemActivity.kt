@@ -56,6 +56,8 @@ class PastProblemActivity : AppCompatActivity() {
 
             icSearch.setOnClickListener { searchProblem() }
 
+            btnPastProblem.setOnClickListener { navigateToPastProblemActivity(this@PastProblemActivity) }
+            btnTimer.setOnClickListener { navigateToTimerActivity(this@PastProblemActivity) }
         }
 
     }
@@ -116,6 +118,7 @@ class PastProblemActivity : AppCompatActivity() {
         }
     }
 
+    //fetch from github
     private fun loadData() {
         lifecycleScope.launch {
             val inbox: Inbox = dataRepo.getProblem()
