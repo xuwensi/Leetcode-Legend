@@ -3,6 +3,7 @@ package edu.uw.wensix.leetcodelegend.model
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
+
 @Parcelize
 data class Problem(
     val id: Int,
@@ -10,8 +11,12 @@ data class Problem(
     val title: String,
     val date: String,
     val difficulty: String,
-    val tag: String,
     val note: String,
     val durationSecond: Int,
     val notifyDate: String?,
-):Parcelable
+):Parcelable, Comparable<Problem> {
+    override fun compareTo(other: Problem): Int {
+
+        return this.number - other.number
+    }
+}

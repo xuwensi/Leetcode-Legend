@@ -15,5 +15,12 @@
     <string name="start">Start Timer</string>
     <string name="working">Started</string>
     <string name="stopped">Stopped</string>
+    <string name="reminder">Reminder</string>
+    <string name="submit">SUBMIT</string>
+    <string name="track_the_problem">Track the Problem!</string>
+    <string name="question_number">Question number</string>
+    <string name="question_title">Question title</string>
+    <string name="difficulty_level">Difficulty level</string>
+    <string name="note">Note</string>
 
 </resources>
