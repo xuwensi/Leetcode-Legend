@@ -45,6 +45,7 @@ class PastProblemActivity : AppCompatActivity() {
             }
 
             icSearch.setOnClickListener { searchProblem() }
+
         }
 
     }

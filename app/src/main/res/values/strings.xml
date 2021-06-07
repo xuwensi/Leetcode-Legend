@@ -11,5 +11,7 @@
     <string name="prob_detail_duration">Time Taken: %s seconds</string>
     <string name="prob_detail_review_date">Planned Review Date: %s</string>
     <string name="prob_detail_note">Notes: %s</string>
+    <string name="sort_by_id">Sort By ID</string>
+    <string name="sort_by_date">Sort By Date</string>
 
 </resources>
