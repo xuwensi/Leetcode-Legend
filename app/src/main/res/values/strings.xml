@@ -11,14 +11,16 @@
     <string name="prob_detail_duration">Time Taken: %s seconds</string>
     <string name="prob_detail_review_date">Planned Review Date: %s</string>
     <string name="prob_detail_note">Notes: %s</string>
-<<<<<<< HEAD
-    <string name="sort_by_id">Sort By ID</string>
-    <string name="sort_by_date">Sort By Date</string>
-=======
     <string name="stop">Stop Timer</string>
     <string name="start">Start Timer</string>
     <string name="working">Started</string>
     <string name="stopped">Stopped</string>
->>>>>>> wensi
+    <string name="reminder">Reminder</string>
+    <string name="submit">SUBMIT</string>
+    <string name="track_the_problem">Track the Problem!</string>
+    <string name="question_number">Question number</string>
+    <string name="question_title">Question title</string>
+    <string name="difficulty_level">Difficulty level</string>
+    <string name="note">Note</string>
 
 </resources>

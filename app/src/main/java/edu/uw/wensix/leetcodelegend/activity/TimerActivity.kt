@@ -23,7 +23,7 @@ class TimerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding =  ActivityTimerBinding.inflate(layoutInflater).apply { setContentView(root) }
+        binding = ActivityTimerBinding.inflate(layoutInflater).apply { setContentView(root) }
         with(binding) {
             val meter = findViewById<Chronometer>(R.id.c_meter)
             val btn = findViewById<Button>(R.id.btn)
@@ -40,17 +40,20 @@ class TimerActivity : AppCompatActivity() {
                     }
 
                     btn.setText(if (isWorking) R.string.stop else R.string.start)
-                    Toast.makeText(this@TimerActivity, getString(
-                        if (isWorking)
-                            R.string.working
-                        else
-                            R.string.stopped),
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this@TimerActivity, getString(
+                            if (isWorking)
+                                R.string.working
+                            else
+                                R.string.stopped
+                        ),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             })
 
             binding.submitBtn.setOnClickListener {
-                var time = SystemClock.elapsedRealtime()-meter.getBase();
+                var time = SystemClock.elapsedRealtime() - meter.getBase();
                 Toast.makeText(this@TimerActivity, "elasp $time", Toast.LENGTH_SHORT).show()
                 navigateToEditProblemActivity(this@TimerActivity)
             }

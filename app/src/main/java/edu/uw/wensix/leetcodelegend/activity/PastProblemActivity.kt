@@ -1,5 +1,7 @@
 package edu.uw.wensix.leetcodelegend.activity
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,13 +17,21 @@ import edu.uw.wensix.leetcodelegend.model.Problem
 import kotlinx.coroutines.launch
 import java.util.*
 
+fun navigateToPastProblemActivity(context: Context) = with(context) {
+
+    val intent = Intent(context, PastProblemActivity::class.java)
+
+    startActivity(intent)
+}
+
 class PastProblemActivity : AppCompatActivity() {
     private lateinit var adapter: ProblemListAdapter
     private lateinit var llApp: LLApplication
     private lateinit var binding: ActivityPastProblemBinding
     private val dataRepo by lazy { llApp.dataRepository }
-    private lateinit var problems: List<Problem>
+    private lateinit var problems: MutableList<Problem>
     private var newProblems: MutableList<Problem> = mutableListOf()
+    private val preferences by lazy { llApp.preferences }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +40,7 @@ class PastProblemActivity : AppCompatActivity() {
         llApp = this.applicationContext as LLApplication
 
         with(binding) {
-            problems = listOf()
+            problems = mutableListOf()
             initProblem()
             readLocalJsonData()
 //            loadData()
@@ -125,7 +135,13 @@ class PastProblemActivity : AppCompatActivity() {
         val gson = Gson()
         val inbox = gson.fromJson(problemsJsonString, Inbox::class.java)
         problems = inbox.problems
-        Collections.sort(problems)
+
+        val insertedProblemString = preferences.getString(PROBLEM_PREF_KEY, "")
+        if (insertedProblemString != "") {
+            val toInsertProblem = gson.fromJson(insertedProblemString, Problem::class.java)
+            problems.add(toInsertProblem)
+        }
+        problems.sort()
         adapter.updateProblem(problems)
     }
 

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import com.google.gson.Gson
@@ -11,9 +12,11 @@ import edu.uw.wensix.leetcodelegend.LLApplication
 import edu.uw.wensix.leetcodelegend.R
 import edu.uw.wensix.leetcodelegend.databinding.ActivityEditProblemBinding
 import edu.uw.wensix.leetcodelegend.model.Problem
+import java.util.*
 
+const val PROBLEM_PREF_KEY = "problem preference key"
 
-fun navigateToEditProblemActivity(context: Context) = with(context){
+fun navigateToEditProblemActivity(context: Context) = with(context) {
 //    val intent = Intent(context, EditProblemActivity::class.java).apply {
 //        val bundle = Bundle().apply {
 //            putParcelable(PROBLEM_KEY, problem)
@@ -29,37 +32,44 @@ fun navigateToEditProblemActivity(context: Context) = with(context){
     startActivity(intent)
 }
 
-
-
-
 class EditProblemActivity : AppCompatActivity() {
-    lateinit var binding: ActivityEditProblemBinding
-    private val app by lazy {application as LLApplication}
-    private val preferences by lazy { app.preferences}
-
-
+    private lateinit var binding: ActivityEditProblemBinding
+    private val app by lazy { application as LLApplication }
+    private val preferences by lazy { app.preferences }
+    lateinit var createdProblem: Problem
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivityEditProblemBinding.inflate(layoutInflater).apply { setContentView(root) }
         super.onCreate(savedInstanceState)
-        with(binding) {
-            binding.submitBtn.setOnClickListener {
-                //create a problem
+        binding = ActivityEditProblemBinding.inflate(layoutInflater).apply { setContentView(root) }
 
-                var problem = Problem(binding.questionNum.toString().toInt(),binding.questionNum.toString().toInt(), binding.questionName.toString(),
-                    "date",
-                    binding.difficulty.toString(), binding.tag.toString(), binding.note.toString(), 0, binding.reminder.toString()
-                    )
+        with(binding) {
+            submitBtn.setOnClickListener {
+                //create a problem
+                createdProblem = Problem(
+                    questionNum.text.toString().toInt(),
+                    questionNum.text.toString().toInt(),
+                    questionName.text.toString(),
+                    Calendar.DATE.toString(),
+                    difficulty.text.toString(),
+                    note.text.toString(),
+                    0,
+                    reminder.text.toString()
+                )
+                Log.i("problem", createdProblem.toString())
 
                 var gson = Gson()
-                var json = gson.toJson(problem)
+                var json = gson.toJson(createdProblem)
 
                 //add to preference
                 preferences.edit {
-                    putString("Problem ${binding.questionNum}", json)
+                    putString(PROBLEM_PREF_KEY, json)
                 }
-                            }
+                navigateToPastProblemActivity(this@EditProblemActivity)
+            }
+
+            btnPastProblem.setOnClickListener { navigateToPastProblemActivity(this@EditProblemActivity) }
+
         }
-        setContentView(R.layout.activity_edit_problem)
+
     }
 }

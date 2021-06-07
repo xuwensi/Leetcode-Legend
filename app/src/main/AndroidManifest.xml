@@ -12,11 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LeetcodeLegend">
-        <activity android:name=".activity.EditProblemActivity"></activity>
+        <activity android:name=".activity.EditProblemActivity"/>
         <activity android:name=".activity.ProblemDetailActivity" />
-        <activity android:name=".activity.PastProblemActivity">
-        </activity>
+        <activity android:name=".activity.PastProblemActivity" />
         <activity android:name=".activity.PerformanceActivity" />
+
         <activity android:name=".activity.TimerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
