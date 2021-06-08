@@ -25,8 +25,9 @@ fun navigateToTimerActivity(context: Context) = with(context) {
 
 class TimerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTimerBinding
+    private var pauseOffset: Long = 0
 
-    private lateinit var chronomter: Chronometer
+    private lateinit var chronometer: Chronometer
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,22 +35,23 @@ class TimerActivity : AppCompatActivity() {
         title =  "Timer"
         binding = ActivityTimerBinding.inflate(layoutInflater).apply { setContentView(root) }
         with(binding) {
-            val meter = findViewById<Chronometer>(R.id.c_meter)
-            btn.setOnClickListener(object : View.OnClickListener {
+            val meter: Chronometer = findViewById<Chronometer>(R.id.c_meter)
+            playBtn.setOnClickListener(object : View.OnClickListener {
                 var isWorking = false
 
                 override fun onClick(v: View) {
                     if (!isWorking) {
-                        meter.setBase(SystemClock.elapsedRealtime())
+                        meter.setBase(SystemClock.elapsedRealtime() - pauseOffset)
                         meter.start()
                         isWorking = true
                     } else {
                         meter.stop()
+                        pauseOffset = SystemClock.elapsedRealtime() - meter.base
                         isWorking = false
                     }
 
 
-                    btn.setText(if (isWorking) R.string.stop else R.string.start)
+                    playBtn.setText(if (isWorking) "PAUSE" else "START")
                     Toast.makeText(
                         this@TimerActivity, getString(
                             if (isWorking)
@@ -63,9 +65,10 @@ class TimerActivity : AppCompatActivity() {
                 }
             })
 
-            pauseBtn.setOnClickListener(object : View.OnClickListener {
+            resetBtn.setOnClickListener(object : View.OnClickListener {
                 override fun onClick(v: View) {
                     meter.setBase(SystemClock.elapsedRealtime())
+                    pauseOffset = 0
                 }
             })
 
@@ -79,6 +82,7 @@ class TimerActivity : AppCompatActivity() {
             }
 
             btnPastProblem.setOnClickListener { navigateToPastProblemActivity(this@TimerActivity) }
+            problemText.setOnClickListener { navigateToPastProblemActivity(this@TimerActivity) }
 
         }
     }

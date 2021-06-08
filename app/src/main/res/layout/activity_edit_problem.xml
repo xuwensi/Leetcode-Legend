@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/containerPadding"
     tools:context=".activity.EditProblemActivity">
 
     <TextView
@@ -33,8 +34,11 @@
         android:layout_height="35dp"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="@+id/question_num_tag"
-        app:layout_constraintLeft_toRightOf="@id/question_num_tag"
-        app:layout_constraintTop_toTopOf="@+id/question_num_tag" />
+        app:layout_constraintTop_toTopOf="@+id/question_num_tag"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="160dp"
+        android:textSize="12sp"
+        />
 
     <TextView
         android:id="@+id/question_name_tag"
@@ -52,9 +56,12 @@
         android:layout_width="154dp"
         android:layout_height="35dp"
         android:inputType="text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="160dp"
         app:layout_constraintBottom_toBottomOf="@+id/question_name_tag"
-        app:layout_constraintLeft_toRightOf="@+id/question_name_tag"
-        app:layout_constraintTop_toTopOf="@id/question_name_tag" />
+        app:layout_constraintTop_toTopOf="@id/question_name_tag"
+        android:textSize="12sp"
+        />
 
 
     <TextView
@@ -74,8 +81,12 @@
         android:layout_height="35dp"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="@+id/difficulty_tag"
-        app:layout_constraintLeft_toRightOf="@+id/difficulty_tag"
-        app:layout_constraintTop_toTopOf="@id/difficulty_tag" />
+        app:layout_constraintTop_toTopOf="@id/difficulty_tag"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="160dp"
+        android:textSize="12sp"
+
+        />
 
     <TextView
         android:id="@+id/note_tag"
@@ -97,9 +108,11 @@
         android:inputType="text"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/note_tag"
-
-
+        android:textSize="12sp"
+        android:gravity="left"
+        android:padding="10sp"
         />
+
 
     <TextView
         android:id="@+id/reminder_tag"
@@ -120,6 +133,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/reminder_tag"
         app:layout_constraintLeft_toRightOf="@+id/reminder_tag"
         app:layout_constraintTop_toTopOf="@id/reminder_tag"
+        android:textSize="12sp"
         />
 
 
@@ -132,19 +146,82 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reminder"
+        android:layout_marginTop="50dp"
         />
 
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/menuContainer"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottomn_menu"
+        app:layout_constraintStart_toStartOf="parent">
 
-        />
+        <ImageButton
+            android:id="@+id/btnTimer"
+            android:layout_width="@dimen/btnWidth"
+            android:layout_height="45dp"
+            android:src="@drawable/ic_timer"
+            android:text="@string/timer"
+            app:layout_constraintEnd_toStartOf="@id/btnPerformance"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/menuContainer" />
+
+        <TextView
+            android:id="@+id/timerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/timer"
+            android:textSize="@dimen/smallFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/btnTimer"
+            app:layout_constraintStart_toStartOf="@id/btnTimer"
+            app:layout_constraintTop_toBottomOf="@id/btnTimer" />
+
+        <ImageButton
+            android:id="@+id/btnPerformance"
+            android:layout_width="@dimen/btnWidth"
+            android:layout_height="45dp"
+            android:background="@color/white"
+            android:src="@drawable/ic_performance"
+            android:text="@string/performance"
+            app:layout_constraintEnd_toStartOf="@id/btnPastProblem"
+            app:layout_constraintStart_toEndOf="@id/btnTimer"
+            app:layout_constraintTop_toTopOf="@id/menuContainer" />
+
+        <TextView
+            android:id="@+id/performanceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/performance"
+            android:textSize="@dimen/smallFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/btnPerformance"
+            app:layout_constraintStart_toStartOf="@id/btnPerformance"
+            app:layout_constraintTop_toBottomOf="@id/btnPerformance" />
+
+        <ImageButton
+            android:id="@+id/btnPastProblem"
+            android:layout_width="@dimen/btnWidth"
+            android:layout_height="45dp"
+            android:background="@color/white"
+            android:src="@drawable/ic_past"
+            android:text="@string/past_problem"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnPerformance"
+            app:layout_constraintTop_toTopOf="@id/menuContainer" />
+
+        <TextView
+            android:id="@+id/problemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/past_problem"
+            android:textSize="@dimen/smallFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/btnPastProblem"
+            app:layout_constraintStart_toStartOf="@id/btnPastProblem"
+            app:layout_constraintTop_toBottomOf="@id/btnPastProblem" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

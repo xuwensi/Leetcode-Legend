@@ -38,6 +38,7 @@
             android:id="@+id/pastProblemList"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:paddingBottom="20dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@id/btnPerformance"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,35 +46,70 @@
             app:layout_constraintTop_toBottomOf="@id/searchBar"
             tools:listitem="@layout/problem_item" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btnTimer"
             android:layout_width="@dimen/btnWidth"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
+            android:background="@color/white"
+            android:src="@drawable/ic_timer"
             android:text="@string/timer"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btnPerformance"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/pastProblemList" />
 
-        <Button
+        <TextView
+            android:id="@+id/timerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/timer"
+            android:textSize="@dimen/smallFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/btnTimer"
+            app:layout_constraintStart_toStartOf="@id/btnTimer"
+            app:layout_constraintTop_toBottomOf="@id/btnTimer" />
+
+        <ImageButton
             android:id="@+id/btnPerformance"
             android:layout_width="@dimen/btnWidth"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
+            android:background="@color/white"
+            android:src="@drawable/ic_performance"
             android:text="@string/performance"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btnPastProblem"
             app:layout_constraintStart_toEndOf="@id/btnTimer"
             app:layout_constraintTop_toBottomOf="@id/pastProblemList" />
 
-        <Button
+        <TextView
+            android:id="@+id/performanceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/performance"
+            android:textSize="@dimen/smallFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/btnPerformance"
+            app:layout_constraintStart_toStartOf="@id/btnPerformance"
+            app:layout_constraintTop_toBottomOf="@id/btnPerformance" />
+
+        <ImageButton
             android:id="@+id/btnPastProblem"
             android:layout_width="@dimen/btnWidth"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
+            android:src="@drawable/ic_past"
             android:text="@string/past_problem"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/btnPerformance"
             app:layout_constraintTop_toBottomOf="@id/pastProblemList" />
+
+        <TextView
+            android:id="@+id/problemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/past_problem"
+            android:textSize="@dimen/smallFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/btnPastProblem"
+            app:layout_constraintStart_toStartOf="@id/btnPastProblem"
+            app:layout_constraintTop_toBottomOf="@id/btnPastProblem" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

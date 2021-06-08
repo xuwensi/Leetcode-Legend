@@ -1,5 +1,6 @@
 package edu.uw.wensix.leetcodelegend.activity
 
+import android.app.ActivityManager
 import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
@@ -11,6 +12,7 @@ import android.view.MenuItem
 import android.widget.Switch
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityManagerCompat
 import androidx.core.content.edit
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -100,8 +102,8 @@ class EditProblemActivity : AppCompatActivity() {
                 )
                 Log.i("problem", createdProblem.toString())
 
-                var gson = Gson()
-                var json = gson.toJson(createdProblem)
+                val gson = Gson()
+                val json = gson.toJson(createdProblem)
 
                 //add to preference
                 preferences.edit {
@@ -112,31 +114,11 @@ class EditProblemActivity : AppCompatActivity() {
                 app.problemToReview = createdProblem
                 refreshProblemManager.reviewProblem()
 
-//                bottomNavigationView.setSelectedItemId(R.id.)
+                btnPastProblem.setOnClickListener { navigateToPastProblemActivity(this@EditProblemActivity) }
+                btnTimer.setOnClickListener { navigateToTimerActivity(this@EditProblemActivity) }
+                timerText.setOnClickListener { navigateToTimerActivity(this@EditProblemActivity) }
+                problemText.setOnClickListener { navigateToPastProblemActivity(this@EditProblemActivity) }
 
-                bottomNavigationView.setOnNavigationItemSelectedListener(
-                    BottomNavigationView.OnNavigationItemSelectedListener {
-                            item ->
-                        when (item.itemId) {
-                            R.id.timer -> {
-                                val intent = Intent(this@EditProblemActivity, TimerActivity::class.java)
-                                return@OnNavigationItemSelectedListener false
-                            }
-                            R.id.performance -> {
-                                val intent = Intent(this@EditProblemActivity, PerformanceActivity::class.java)
-                                startActivity(intent)
-                                return@OnNavigationItemSelectedListener true
-                            }
-                            R.id.past -> {
-                                val intent = Intent(this@EditProblemActivity, PastProblemActivity::class.java)
-                                startActivity(intent)
-                                return@OnNavigationItemSelectedListener true
-                            }
-                        }
-                        false
-
-                    }
-                )
 
 //                val navigasjonen = BottomNavigationView.OnNavigationItemSelectedListener { item ->
 //                    when (item.itemId) {
