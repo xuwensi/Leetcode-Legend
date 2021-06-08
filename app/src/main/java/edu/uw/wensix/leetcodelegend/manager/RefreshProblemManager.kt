@@ -34,7 +34,8 @@ class RefreshProblemManager(context: Context) {
         val delay = ChronoUnit.DAYS.between(createdDate, reviewDate)
 
         val request = OneTimeWorkRequestBuilder<LeetcodeWorker>()
-            .setInitialDelay(delay, TimeUnit.DAYS)
+//            .setInitialDelay(delay, TimeUnit.DAYS)
+            .setInitialDelay(5, TimeUnit.SECONDS)
 //            .setConstraints(
 //                androidx.work.Constraints.Builder()
 //                    .setRequiredNetworkType(NetworkType.CONNECTED)

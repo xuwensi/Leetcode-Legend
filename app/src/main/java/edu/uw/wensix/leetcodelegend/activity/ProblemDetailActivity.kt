@@ -60,6 +60,8 @@ class ProblemDetailActivity : AppCompatActivity() {
                 problemNote.text =
                     root.context.getString(R.string.prob_detail_note, problem.note)
             }
+
+            btnProblemReview.setOnClickListener { navigateToTimerActivity(this@ProblemDetailActivity) }
         }
 
     }
