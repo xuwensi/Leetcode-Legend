@@ -58,6 +58,8 @@ class PastProblemActivity : AppCompatActivity() {
 
             btnPastProblem.setOnClickListener { navigateToPastProblemActivity(this@PastProblemActivity) }
             btnTimer.setOnClickListener { navigateToTimerActivity(this@PastProblemActivity) }
+            timerText.setOnClickListener { navigateToTimerActivity(this@PastProblemActivity) }
+            problemText.setOnClickListener { navigateToPastProblemActivity(this@PastProblemActivity) }
         }
 
     }

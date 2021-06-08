@@ -5,7 +5,8 @@
     android:id="@+id/constraint_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="@dimen/containerPadding">
 
 
     <Chronometer
@@ -53,31 +54,78 @@
         app:layout_constraintTop_toBottomOf="@+id/btn" />
 
 
-    <Button
-        android:id="@+id/btnTimer"
-        android:layout_width="@dimen/btnWidth"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/menuContainer"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/timer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btnPerformance"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnPerformance"
-        android:layout_width="@dimen/btnWidth"
-        android:layout_height="wrap_content"
-        android:text="@string/performance"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btnPastProblem"
-        app:layout_constraintStart_toEndOf="@id/btnTimer" />
-
-    <Button
-        android:id="@+id/btnPastProblem"
-        android:layout_width="@dimen/btnWidth"
-        android:layout_height="wrap_content"
-        android:text="@string/past_problem"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnPerformance" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/btnTimer"
+            android:layout_width="@dimen/btnWidth"
+            android:layout_height="45dp"
+            android:src="@drawable/ic_timer"
+            android:text="@string/timer"
+            app:layout_constraintEnd_toStartOf="@id/btnPerformance"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/menuContainer" />
+
+        <TextView
+            android:id="@+id/timerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/timer"
+            android:textSize="@dimen/smallFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/btnTimer"
+            app:layout_constraintStart_toStartOf="@id/btnTimer"
+            app:layout_constraintTop_toBottomOf="@id/btnTimer" />
+
+        <ImageButton
+            android:id="@+id/btnPerformance"
+            android:layout_width="@dimen/btnWidth"
+            android:layout_height="45dp"
+            android:background="@color/white"
+            android:src="@drawable/ic_performance"
+            android:text="@string/performance"
+            app:layout_constraintEnd_toStartOf="@id/btnPastProblem"
+            app:layout_constraintStart_toEndOf="@id/btnTimer"
+            app:layout_constraintTop_toTopOf="@id/menuContainer" />
+
+        <TextView
+            android:id="@+id/performanceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/performance"
+            android:textSize="@dimen/smallFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/btnPerformance"
+            app:layout_constraintStart_toStartOf="@id/btnPerformance"
+            app:layout_constraintTop_toBottomOf="@id/btnPerformance" />
+
+        <ImageButton
+            android:id="@+id/btnPastProblem"
+            android:layout_width="@dimen/btnWidth"
+            android:layout_height="45dp"
+            android:background="@color/white"
+            android:src="@drawable/ic_past"
+            android:text="@string/past_problem"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnPerformance"
+            app:layout_constraintTop_toTopOf="@id/menuContainer" />
+
+        <TextView
+            android:id="@+id/problemText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/past_problem"
+            android:textSize="@dimen/smallFont"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/btnPastProblem"
+            app:layout_constraintStart_toStartOf="@id/btnPastProblem"
+            app:layout_constraintTop_toBottomOf="@id/btnPastProblem" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

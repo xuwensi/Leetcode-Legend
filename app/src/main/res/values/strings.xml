@@ -2,7 +2,7 @@
     <string name="app_name">Leetcode Legend</string>
     <string name="search">Search</string>
     <string name="timer">Timer</string>
-    <string name="performance">Stats</string>
+    <string name="performance">Performance</string>
     <string name="past_problem">Problems</string>
     <string name="practice_it">Practice It!</string>
     <string name="prob_detail_id">Number: %d</string>
