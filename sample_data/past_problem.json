@@ -1,7 +1,4 @@
-{
-  "title" : "Leetcode Legend data",
-
-  "problems": [
+[
       {
         "id": 100,
         "number": 100,
@@ -54,4 +51,8 @@
         "notifyDate": "04/01/2021"
       }
     ]
+<<<<<<< HEAD
 }
+=======
+  
+>>>>>>> origin/Oliver_Nie

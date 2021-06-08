@@ -15,8 +15,8 @@
         <activity android:name=".activity.EditProblemActivity"/>
         <activity android:name=".activity.ProblemDetailActivity" />
         <activity android:name=".activity.PastProblemActivity" />
+        <activity android:name=".activity.VisualActivity"/>
         <activity android:name=".activity.PerformanceActivity" />
-
         <activity android:name=".activity.TimerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
