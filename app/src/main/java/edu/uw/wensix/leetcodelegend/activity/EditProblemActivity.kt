@@ -7,9 +7,18 @@ import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
+import android.widget.Switch
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationItemView
+import com.google.android.material.bottomnavigation.BottomNavigationMenu
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.gson.Gson
 import edu.uw.wensix.leetcodelegend.LLApplication
 import edu.uw.wensix.leetcodelegend.R
@@ -101,13 +110,66 @@ class EditProblemActivity : AppCompatActivity() {
                 app.problemToReview = createdProblem
                 refreshProblemManager.reviewProblem()
 
-                navigateToPastProblemActivity(this@EditProblemActivity)
+                bottomNavigationView.setSelectedItemId(R.id.timer)
 
-            }
+                bottomNavigationView.setOnNavigationItemSelectedListener(
+                    BottomNavigationView.OnNavigationItemSelectedListener {
+                            item ->
+                        when (item.itemId) {
+                            R.id.timer -> {
+                                val intent = Intent(this@EditProblemActivity, TimerActivity::class.java)
+                                return@OnNavigationItemSelectedListener false
+                            }
+                            R.id.performance -> {
+                                val intent = Intent(this@EditProblemActivity, PerformanceActivity::class.java)
+                                startActivity(intent)
+                                return@OnNavigationItemSelectedListener true
+                            }
+                            R.id.past -> {
+                                val intent = Intent(this@EditProblemActivity, PastProblemActivity::class.java)
+                                startActivity(intent)
+                                return@OnNavigationItemSelectedListener true
+                            }
+                        }
+                        false
 
-            btnPastProblem.setOnClickListener { navigateToPastProblemActivity(this@EditProblemActivity) }
+                    }
+                )
+
+//                val navigasjonen = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+//                    when (item.itemId) {
+//                        R.id.timer -> {
+//                            val intent = Intent(this@EditProblemActivity, TimerActivity::class.java)
+//                            return@OnNavigationItemSelectedListener false
+//                        }
+//                        R.id.performance -> {
+//                            val intent = Intent(this@EditProblemActivity, PerformanceActivity::class.java)
+//                            startActivity(intent)
+//                            return@OnNavigationItemSelectedListener true
+//                        }
+//                        R.id.past -> {
+//                            val intent = Intent(this@EditProblemActivity, PastProblemActivity::class.java)
+//                            startActivity(intent)
+//                            return@OnNavigationItemSelectedListener true
+//                        }
+//                    }
+//                    false
+//                }
+//                val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+//                bottomNavigation.setOnNavigationItemSelectedListener(navigasjonen)
+//
+//
+//            }
+
+//                navigateToPastProblemActivity(this@EditProblemActivity)
+
+//            btnPastProblem.setOnClickListener { navigateToPastProblemActivity(this@EditProblemActivity) }
 
         }
+
+    }
+
+
 
     }
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Timer"
+        android:id="@+id/timer"
+        android:icon="@drawable/ic_timer"/>
+    <item android:title="Performance"
+        android:id="@+id/performance"
+
+        android:icon="@drawable/ic_past"/>
+    <item android:title="Past Problems"
+        android:id="@+id/past"
+
+        android:icon="@drawable/ic_performance"/>
+</menu>

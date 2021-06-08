@@ -129,36 +129,22 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
         android:text="@string/submit"
-        app:layout_constraintBottom_toTopOf="@+id/btnPerformance"
-        app:layout_constraintLeft_toLeftOf="@id/btnPerformance"
-        app:layout_constraintRight_toRightOf="@id/btnPerformance" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reminder"
+        />
 
-    <Button
-        android:id="@+id/btnTimer"
-        android:layout_width="@dimen/btnWidth"
-        android:layout_height="wrap_content"
-        android:text="@string/timer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btnPerformance"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/btnPerformance"
-        android:layout_width="@dimen/btnWidth"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/performance"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btnPastProblem"
-        app:layout_constraintStart_toEndOf="@id/btnTimer" />
-
-    <Button
-        android:id="@+id/btnPastProblem"
-        android:layout_width="@dimen/btnWidth"
-        android:layout_height="wrap_content"
-        android:text="@string/past_problem"
+        android:background="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnPerformance" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottomn_menu"
 
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
