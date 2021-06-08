@@ -17,7 +17,7 @@
 
     <Button
         android:id="@+id/pieGraph"
-        android:text="Overall "
+        android:text="Question Complete Records "
         android:layout_width="187dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"

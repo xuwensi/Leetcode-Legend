@@ -100,7 +100,6 @@ public class VisualActivity extends AppCompatActivity implements View.OnClickLis
         AnyChartView anyChartView = (AnyChartView) findViewById(R.id.any_chart_view);
         switch (v.getId()) {
             case R.id.lineGraph:
-                anyChartView.clear();
                 Toast.makeText(this, "Line Graph clicked", Toast.LENGTH_SHORT).show();
                 Cartesian cartesian = AnyChart.line();
 
