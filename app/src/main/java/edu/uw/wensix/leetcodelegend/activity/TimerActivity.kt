@@ -31,15 +31,16 @@ class TimerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        title =  "Timer"
         binding = ActivityTimerBinding.inflate(layoutInflater).apply { setContentView(root) }
         with(binding) {
-
             val meter = findViewById<Chronometer>(R.id.c_meter)
             btn.setOnClickListener(object : View.OnClickListener {
                 var isWorking = false
 
                 override fun onClick(v: View) {
                     if (!isWorking) {
+                        meter.setBase(SystemClock.elapsedRealtime())
                         meter.start()
                         isWorking = true
                     } else {
@@ -65,7 +66,6 @@ class TimerActivity : AppCompatActivity() {
             pauseBtn.setOnClickListener(object : View.OnClickListener {
                 override fun onClick(v: View) {
                     meter.setBase(SystemClock.elapsedRealtime())
-                    meter.start()
                 }
             })
 

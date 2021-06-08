@@ -57,6 +57,8 @@ class EditProblemActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        title =  "Edit Problem"
+
         binding = ActivityEditProblemBinding.inflate(layoutInflater).apply { setContentView(root) }
 
         with(binding) {
@@ -110,7 +112,7 @@ class EditProblemActivity : AppCompatActivity() {
                 app.problemToReview = createdProblem
                 refreshProblemManager.reviewProblem()
 
-                bottomNavigationView.setSelectedItemId(R.id.timer)
+//                bottomNavigationView.setSelectedItemId(R.id.)
 
                 bottomNavigationView.setOnNavigationItemSelectedListener(
                     BottomNavigationView.OnNavigationItemSelectedListener {
