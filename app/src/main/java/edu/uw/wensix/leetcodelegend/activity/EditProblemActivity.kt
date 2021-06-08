@@ -57,13 +57,23 @@ class EditProblemActivity : AppCompatActivity() {
             val day = calendar.get(Calendar.DAY_OF_MONTH)
 
             reminderTag.setOnClickListener {
-                val dpd = DatePickerDialog(this@EditProblemActivity, DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
-                    reminder.setText("" + mMonth + "/" + mDay + "/" + mYear)
-                }, year, month, day)
+                val dpd = DatePickerDialog(
+                    this@EditProblemActivity,
+                    DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
+                        val realMonth = mMonth + 1
+                        if (mDay < 10) {
+                            reminder.setText("${realMonth}/0${mDay}/${mYear}")
+                        } else {
+                            reminder.setText("${realMonth}/${mDay}/${mYear}")
+                        }
+                    },
+                    year,
+                    month,
+                    day
+                )
                 dpd.show()
             }
 
-            Log.i("reminder", reminder.text.toString())
 
             submitBtn.setOnClickListener {
                 //create a problem
@@ -74,7 +84,7 @@ class EditProblemActivity : AppCompatActivity() {
                     SimpleDateFormat("MM/dd/yyyy").format(Date()),
                     difficulty.text.toString(),
                     note.text.toString(),
-                    intent.getLongExtra(TIME_KEY, 0).toInt()/1000,
+                    intent.getLongExtra(TIME_KEY, 0).toInt() / 1000,
                     reminder.text.toString()
                 )
                 Log.i("problem", createdProblem.toString())
