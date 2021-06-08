@@ -79,8 +79,6 @@ class TimerActivity : AppCompatActivity() {
             }
 
             btnPastProblem.setOnClickListener { navigateToPastProblemActivity(this@TimerActivity) }
-            btnTimer.setOnClickListener { navigateToTimerActivity(this@TimerActivity) }
-            timerText.setOnClickListener { navigateToTimerActivity(this@TimerActivity) }
             problemText.setOnClickListener { navigateToPastProblemActivity(this@TimerActivity) }
 
         }
