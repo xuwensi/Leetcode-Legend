@@ -63,6 +63,8 @@ class EditProblemActivity : AppCompatActivity() {
                 dpd.show()
             }
 
+            Log.i("reminder", reminder.text.toString())
+
             submitBtn.setOnClickListener {
                 //create a problem
                 createdProblem = Problem(
