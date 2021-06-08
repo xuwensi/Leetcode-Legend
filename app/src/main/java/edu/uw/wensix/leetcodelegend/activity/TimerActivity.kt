@@ -19,7 +19,7 @@ import java.util.*
 fun navigateToTimerActivity(context: Context) = with(context) {
 
     val intent = Intent(context, TimerActivity::class.java)
-    
+
     startActivity(intent)
 }
 
@@ -27,13 +27,13 @@ class TimerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTimerBinding
 
     private lateinit var chronomter: Chronometer
-    var isPlay = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTimerBinding.inflate(layoutInflater).apply { setContentView(root) }
         with(binding) {
+
             val meter = findViewById<Chronometer>(R.id.c_meter)
             btn.setOnClickListener(object : View.OnClickListener {
                 var isWorking = false
@@ -47,6 +47,7 @@ class TimerActivity : AppCompatActivity() {
                         isWorking = false
                     }
 
+
                     btn.setText(if (isWorking) R.string.stop else R.string.start)
                     Toast.makeText(
                         this@TimerActivity, getString(
@@ -57,8 +58,18 @@ class TimerActivity : AppCompatActivity() {
                         ),
                         Toast.LENGTH_SHORT
                     ).show()
+
                 }
             })
+
+            pauseBtn.setOnClickListener(object : View.OnClickListener {
+                override fun onClick(v: View) {
+                    meter.setBase(SystemClock.elapsedRealtime())
+                    meter.start()
+                }
+            })
+
+
 
             submitBtn.setOnClickListener {
                 val time = SystemClock.elapsedRealtime() - meter.getBase();

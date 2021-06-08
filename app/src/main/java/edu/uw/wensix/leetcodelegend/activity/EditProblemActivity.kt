@@ -1,5 +1,6 @@
 package edu.uw.wensix.leetcodelegend.activity
 
+import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -43,38 +44,53 @@ class EditProblemActivity : AppCompatActivity() {
     lateinit var createdProblem: Problem
     private val refreshProblemManager by lazy { app.refreshProblemManager }
 
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditProblemBinding.inflate(layoutInflater).apply { setContentView(root) }
 
         with(binding) {
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+            reminderTag.setOnClickListener {
+                val dpd = DatePickerDialog(this@EditProblemActivity, DatePickerDialog.OnDateSetListener { view, mYear, mMonth, mDay ->
+                    reminder.setText("" + mMonth + "/" + mDay + "/" + mYear)
+                }, year, month, day)
+                dpd.show()
+            }
+
             submitBtn.setOnClickListener {
                 //create a problem
                 createdProblem = Problem(
                     questionNum.text.toString().toInt(),
                     questionNum.text.toString().toInt(),
                     questionName.text.toString(),
-                    SimpleDateFormat("MM/dd/yyyy").format(Date()).toString(),
+                    SimpleDateFormat("MM/dd/yyyy").format(Date()),
                     difficulty.text.toString(),
                     note.text.toString(),
                     intent.getLongExtra(TIME_KEY, 0).toInt()/1000,
                     reminder.text.toString()
                 )
+                Log.i("problem", createdProblem.toString())
 
-
-                val gson = Gson()
-                val json = gson.toJson(createdProblem)
+                var gson = Gson()
+                var json = gson.toJson(createdProblem)
 
                 //add to preference
                 preferences.edit {
                     putString(PROBLEM_PREF_KEY, json)
                 }
 
+
                 app.problemToReview = createdProblem
                 refreshProblemManager.reviewProblem()
 
-//                navigateToPastProblemActivity(this@EditProblemActivity)
+                navigateToPastProblemActivity(this@EditProblemActivity)
+
             }
 
             btnPastProblem.setOnClickListener { navigateToPastProblemActivity(this@EditProblemActivity) }
@@ -82,4 +98,5 @@ class EditProblemActivity : AppCompatActivity() {
         }
 
     }
+
 }

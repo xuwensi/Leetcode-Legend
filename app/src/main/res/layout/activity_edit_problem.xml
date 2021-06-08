@@ -106,7 +106,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:text="@string/reminder"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/note" />
@@ -115,12 +115,11 @@
     <EditText
         android:id="@+id/reminder"
         android:layout_width="154dp"
-        android:layout_height="35dp"
+        android:layout_height="50dp"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="@+id/reminder_tag"
         app:layout_constraintLeft_toRightOf="@+id/reminder_tag"
         app:layout_constraintTop_toTopOf="@id/reminder_tag"
-
         />
 
 
