@@ -121,8 +121,8 @@ class PastProblemActivity : AppCompatActivity() {
     //fetch from github
     private fun loadData() {
         lifecycleScope.launch {
-            val inbox: Inbox = dataRepo.getProblem()
-            problems = inbox.problems
+            val problems: MutableList<Problem> = dataRepo.getProblem()
+
             adapter.updateProblem(problems)
 //            Log.i("problem", problems.toString())
 
