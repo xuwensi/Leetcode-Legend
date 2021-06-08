@@ -1,5 +1,6 @@
 package edu.uw.wensix.leetcodelegend.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,7 +33,6 @@ import java.util.List;
 
 import edu.uw.wensix.leetcodelegend.R;
 
-
 public class VisualActivity extends AppCompatActivity implements View.OnClickListener {
 
     List<DataEntry> bar = new ArrayList<>();
@@ -47,6 +47,18 @@ public class VisualActivity extends AppCompatActivity implements View.OnClickLis
         lineGraph.setOnClickListener(this);
         Button pieGraph = findViewById(R.id.pieGraph);
         pieGraph.setOnClickListener(this);
+        findViewById(R.id.btnTimer).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(VisualActivity.this, TimerActivity.class));
+            }
+        });
+        findViewById(R.id.btnPastProblem).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(VisualActivity.this, PastProblemActivity.class));
+            }
+        });
     }
 
 

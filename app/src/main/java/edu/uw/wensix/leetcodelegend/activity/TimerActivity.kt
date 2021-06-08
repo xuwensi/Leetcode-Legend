@@ -80,7 +80,14 @@ class TimerActivity : AppCompatActivity() {
 
             btnPastProblem.setOnClickListener { navigateToPastProblemActivity(this@TimerActivity) }
             problemText.setOnClickListener { navigateToPastProblemActivity(this@TimerActivity) }
-
+            btnPerformance.setOnClickListener {
+                val intent = Intent(this@TimerActivity, VisualActivity::class.java)
+                startActivity(intent)
+            }
+            performanceText.setOnClickListener {
+                val intent = Intent(this@TimerActivity, VisualActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 }

@@ -24,23 +24,22 @@
         app:layout_constraintLeft_toRightOf="@id/lineGraph"
         android:layout_marginLeft="5dp" />
 
-
-
-
     <FrameLayout
         android:id="@+id/statDiagram"
-        android:layout_width="403dp"
-        android:layout_height="660dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="4dp"
+        app:layout_constraintBottom_toTopOf="@id/menuContainer"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/pieGraph"
-        app:layout_constraintBottom_toBottomOf="@id/menuContainer">
+        app:layout_constraintVertical_bias="0.0">
 
         <com.anychart.AnyChartView
             android:id="@+id/any_chart_view"
             android:layout_width="match_parent"
-            android:layout_height="590dp"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:layout_height="570dp"/>
     </FrameLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/menuContainer"
         android:layout_width="wrap_content"

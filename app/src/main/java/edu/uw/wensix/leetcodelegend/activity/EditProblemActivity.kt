@@ -116,7 +116,14 @@ class EditProblemActivity : AppCompatActivity() {
                 btnTimer.setOnClickListener { navigateToTimerActivity(this@EditProblemActivity) }
                 timerText.setOnClickListener { navigateToTimerActivity(this@EditProblemActivity) }
                 problemText.setOnClickListener { navigateToPastProblemActivity(this@EditProblemActivity) }
-
+                btnPerformance.setOnClickListener {
+                    val intent = Intent(this@EditProblemActivity, VisualActivity::class.java)
+                    startActivity(intent)
+                }
+                performanceText.setOnClickListener {
+                    val intent = Intent(this@EditProblemActivity, VisualActivity::class.java)
+                    startActivity(intent)
+                }
 
 //                bottomNavigationView.setSelectedItemId(R.id.timer)
 //
