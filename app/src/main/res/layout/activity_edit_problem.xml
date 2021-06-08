@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/containerPadding"
     tools:context=".activity.EditProblemActivity">
 
     <TextView
@@ -113,6 +112,7 @@
         android:padding="10sp"
         />
 
+        />
 
     <TextView
         android:id="@+id/reminder_tag"
@@ -153,6 +153,7 @@
         android:id="@+id/menuContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
