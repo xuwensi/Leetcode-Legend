@@ -63,7 +63,6 @@ class ProblemDetailActivity : AppCompatActivity() {
 
             btnProblemReview.setOnClickListener { navigateToTimerActivity(this@ProblemDetailActivity) }
         }
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

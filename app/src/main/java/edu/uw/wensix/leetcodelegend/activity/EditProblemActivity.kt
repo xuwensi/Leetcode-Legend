@@ -33,12 +33,6 @@ const val PROBLEM_PREF_KEY = "problem preference key"
 const val TIME_KEY = "TIME_KEY"
 
 fun navigateToEditProblemActivity(context: Context, time: Long) = with(context) {
-//    val intent = Intent(context, EditProblemActivity::class.java).apply {
-//        val bundle = Bundle().apply {
-//            putParcelable(PROBLEM_KEY, problem)
-//        }
-//        putExtras(bundle)
-//    }
     val intent = Intent(context, EditProblemActivity::class.java).apply {
         val bundle = Bundle().apply {
             putLong(TIME_KEY, time)
@@ -54,7 +48,6 @@ class EditProblemActivity : AppCompatActivity() {
     private val preferences by lazy { app.preferences }
     lateinit var createdProblem: Problem
     private val refreshProblemManager by lazy { app.refreshProblemManager }
-
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -87,7 +80,6 @@ class EditProblemActivity : AppCompatActivity() {
                 dpd.show()
             }
 
-
             submitBtn.setOnClickListener {
                 //create a problem
                 createdProblem = Problem(
@@ -110,7 +102,6 @@ class EditProblemActivity : AppCompatActivity() {
                     putString(PROBLEM_PREF_KEY, json)
                 }
 
-
                 app.problemToReview = createdProblem
                 refreshProblemManager.reviewProblem()
 
@@ -118,37 +109,6 @@ class EditProblemActivity : AppCompatActivity() {
                 btnTimer.setOnClickListener { navigateToTimerActivity(this@EditProblemActivity) }
                 timerText.setOnClickListener { navigateToTimerActivity(this@EditProblemActivity) }
                 problemText.setOnClickListener { navigateToPastProblemActivity(this@EditProblemActivity) }
-
-
-//                val navigasjonen = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-//                    when (item.itemId) {
-//                        R.id.timer -> {
-//                            val intent = Intent(this@EditProblemActivity, TimerActivity::class.java)
-//                            return@OnNavigationItemSelectedListener false
-//                        }
-//                        R.id.performance -> {
-//                            val intent = Intent(this@EditProblemActivity, PerformanceActivity::class.java)
-//                            startActivity(intent)
-//                            return@OnNavigationItemSelectedListener true
-//                        }
-//                        R.id.past -> {
-//                            val intent = Intent(this@EditProblemActivity, PastProblemActivity::class.java)
-//                            startActivity(intent)
-//                            return@OnNavigationItemSelectedListener true
-//                        }
-//                    }
-//                    false
-//                }
-//                val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-//                bottomNavigation.setOnNavigationItemSelectedListener(navigasjonen)
-//
-//
-//            }
-
-//                navigateToPastProblemActivity(this@EditProblemActivity)
-
-//            btnPastProblem.setOnClickListener { navigateToPastProblemActivity(this@EditProblemActivity) }
-
         }
 
     }

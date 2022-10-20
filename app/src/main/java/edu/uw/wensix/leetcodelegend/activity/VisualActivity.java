@@ -61,7 +61,6 @@ public class VisualActivity extends AppCompatActivity implements View.OnClickLis
         });
     }
 
-
     public int[] get_json() {
         String json;
         int[] dataArray = new int[] {0, 0, 0};
@@ -86,7 +85,6 @@ public class VisualActivity extends AppCompatActivity implements View.OnClickLis
                     dataArray[2] = dataArray[2] + 1;
                 }
             }
-
         } catch (IOException e){
             e.printStackTrace();
         } catch (JSONException e) {
@@ -140,7 +138,6 @@ public class VisualActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.pieGraph:
                 Toast.makeText(this, "Pie Graph clicked", Toast.LENGTH_SHORT).show();
                 Pie pie = AnyChart.pie();
-
                 List<DataEntry> data = new ArrayList<>();
                 data.add(new ValueDataEntry("Easy", records[0]));
                 data.add(new ValueDataEntry("Medium", records[1]));

@@ -31,7 +31,6 @@ class ProblemListAdapter(
                 problemClickedListener(problem)
             }
         }
-
     }
 
     fun updateProblem(newList: List<Problem>) {

@@ -43,14 +43,10 @@ class PastProblemActivity : AppCompatActivity() {
             problems = mutableListOf()
             initProblem()
             readLocalJsonData()
-//            loadData()
 
             swipeToRefreshLayout.setOnRefreshListener {
                 initProblem()
-
                 readLocalJsonData()
-//                loadData()
-
                 swipeToRefreshLayout.isRefreshing = false
             }
 
@@ -67,7 +63,6 @@ class PastProblemActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-
     }
 
     private fun searchProblem() {
@@ -83,10 +78,8 @@ class PastProblemActivity : AppCompatActivity() {
 
             if (keyword == "") {
                 initProblem()
-
             } else {
                 newProblems = mutableListOf()
-
                 problems.forEach { problem ->
                     if (problem.title.lowercase().contains(keyword) || problem.number.toString()
                             .lowercase()
@@ -96,12 +89,9 @@ class PastProblemActivity : AppCompatActivity() {
                         newProblems.add(problem)
                     }
                 }
-
                 initNewProblem()
-
             }
         }
-
     }
 
     private fun initProblem() {
@@ -109,7 +99,6 @@ class PastProblemActivity : AppCompatActivity() {
             adapter = ProblemListAdapter(problems)
             pastProblemList.adapter = adapter
             adapter.problemClickedListener = { problem ->
-
                 navigateToProblemDetailActivity(this@PastProblemActivity, problem)
             }
         }
@@ -120,7 +109,6 @@ class PastProblemActivity : AppCompatActivity() {
             adapter = ProblemListAdapter(newProblems)
             pastProblemList.adapter = adapter
             adapter.problemClickedListener = { problem ->
-
                 navigateToProblemDetailActivity(this@PastProblemActivity, problem)
             }
         }
@@ -130,14 +118,7 @@ class PastProblemActivity : AppCompatActivity() {
     private fun loadData() {
         lifecycleScope.launch {
             val problems: MutableList<Problem> = dataRepo.getProblem()
-
             adapter.updateProblem(problems)
-//            Log.i("problem", problems.toString())
-
-//            }.onFailure {
-//                Toast.makeText(this@PastProblemActivity, "Error fetching past problems", Toast.LENGTH_SHORT).show()
-//            }
-
         }
     }
 

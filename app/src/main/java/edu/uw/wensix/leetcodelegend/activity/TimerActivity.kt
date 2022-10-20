@@ -17,18 +17,14 @@ import edu.uw.wensix.leetcodelegend.databinding.ActivityTimerBinding
 import java.util.*
 
 fun navigateToTimerActivity(context: Context) = with(context) {
-
     val intent = Intent(context, TimerActivity::class.java)
-
     startActivity(intent)
 }
 
 class TimerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTimerBinding
     private var pauseOffset: Long = 0
-
     private lateinit var chronometer: Chronometer
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +46,6 @@ class TimerActivity : AppCompatActivity() {
                         isWorking = false
                     }
 
-
                     playBtn.setText(if (isWorking) "PAUSE" else "START")
                     Toast.makeText(
                         this@TimerActivity, getString(
@@ -61,7 +56,6 @@ class TimerActivity : AppCompatActivity() {
                         ),
                         Toast.LENGTH_SHORT
                     ).show()
-
                 }
             })
 
@@ -72,12 +66,9 @@ class TimerActivity : AppCompatActivity() {
                 }
             })
 
-
-
             submitBtn.setOnClickListener {
                 val time = SystemClock.elapsedRealtime() - meter.getBase();
                 Log.i("time", time.toString())
-//                Toast.makeText(this@TimerActivity, "elasp $time", Toast.LENGTH_SHORT).show()
                 navigateToEditProblemActivity(this@TimerActivity, time)
             }
 

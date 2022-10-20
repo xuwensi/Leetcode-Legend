@@ -35,12 +35,6 @@ class RefreshProblemManager(context: Context) {
 
         val request = OneTimeWorkRequestBuilder<LeetcodeWorker>()
             .setInitialDelay(delay, TimeUnit.DAYS)
-//            .setInitialDelay(5, TimeUnit.SECONDS)
-//            .setConstraints(
-//                androidx.work.Constraints.Builder()
-//                    .setRequiredNetworkType(NetworkType.CONNECTED)
-//                    .build()
-//            )
             .addTag(PROBLEM_REFRESH_WORK_TAG)
             .build()
 

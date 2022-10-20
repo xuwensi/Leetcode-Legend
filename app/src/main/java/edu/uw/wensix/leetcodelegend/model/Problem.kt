@@ -16,7 +16,6 @@ data class Problem(
     val notifyDate: String?,
 ):Parcelable, Comparable<Problem> {
     override fun compareTo(other: Problem): Int {
-
         return this.number - other.number
     }
 }

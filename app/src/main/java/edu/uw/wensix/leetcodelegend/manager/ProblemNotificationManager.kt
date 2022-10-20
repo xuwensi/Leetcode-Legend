@@ -18,7 +18,6 @@ import kotlin.random.Random
 
 private const val NEW_PROBLEM_CHANNEL_ID = "NEW_PROBLEM_CHANNEL_ID"
 
-
 class ProblemNotificationManager(private val context: Context) {
     private val notificationManager = NotificationManagerCompat.from(context)
     private val llApp: LLApplication = context.applicationContext as LLApplication
@@ -43,8 +42,7 @@ class ProblemNotificationManager(private val context: Context) {
             0,
             intent,
             PendingIntent.FLAG_UPDATE_CURRENT
-        ) // dont forget to add PendingIntent.FLAG_UPDATE_CURRENT to send data over
-
+        )
 
         // Build information you want the notification to show
         val builder = NotificationCompat.Builder(
