@@ -13,7 +13,6 @@ class LeetcodeWorker(
     workerParameters: WorkerParameters
 ): CoroutineWorker(context, workerParameters) {
 
-//    private val dataRepository by lazy { dotifyApp.dataRepository }
     private val llApp by lazy { context.applicationContext as LLApplication }
     private val problemNotificationManager by lazy { llApp.notificationManager }
 

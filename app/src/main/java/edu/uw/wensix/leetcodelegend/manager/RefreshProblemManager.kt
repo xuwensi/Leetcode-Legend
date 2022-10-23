@@ -11,7 +11,6 @@ import java.util.concurrent.TimeUnit
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 
-
 private const val PROBLEM_REFRESH_WORK_TAG = "PROBLEM_REFRESH_WORK_TAG"
 
 class RefreshProblemManager(context: Context) {

@@ -68,7 +68,6 @@ class ProblemNotificationManager(private val context: Context) {
     }
 
     private fun initNewProblemChannel() {
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             // Info about the channel
             val name = context.getString(R.string.new_problem)
